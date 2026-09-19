@@ -1,0 +1,393 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WebKart - Home</title>
+  <style>
+    /* 1. Basic Page Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background-color: #ffffff;
+      color: #222222;
+    }
+
+    /* 2. Navigation Bar */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #ffffff;
+      padding: 15px 40px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .navbar .logo {
+      font-size: 24px;
+      font-weight: bold;
+      color: #f47b20;
+      text-decoration: none;
+    }
+
+    .navbar .logo span {
+      color: #00b3ff;
+    }
+
+    .navbar a {
+      text-decoration: none;
+      color: #333333;
+      font-weight: bold;
+      padding: 8px 12px;
+      border-radius: 5px;
+      transition: 0.3s;
+    }
+
+    .navbar a:hover,
+    .navbar a.active {
+      background-color: #f47b20;
+      color: #ffffff;
+    }     
+
+    /* 3. Hero Section */
+    .Home {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .hero {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      gap: 15px;
+      padding: 0 200px;
+
+      width: 100%;
+      height: calc(100vh - 80px);
+      min-height: 600px;
+
+      background:
+        linear-gradient(rgba(32, 25, 25, 0.45), rgba(26, 18, 18, 0.45)),
+        url("./bg.jpeg");
+
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+       
+    .button {
+      display: inline-block;
+      width: 130px;
+
+      padding: 10px;
+
+      background-color: rgb(128, 62, 44);
+      color: white;
+
+      text-decoration: none;
+      text-align: center;
+
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: bold;
+
+      border: none;
+      cursor: pointer;
+      height: 35px;
+    }
+
+    .button a {
+      text-decoration: none;
+      color: white;
+    }
+
+    .hero h1 {
+      font-size: 25px;
+      margin: 0;
+      color: rgb(128, 62, 44);
+    }
+
+    .hero h2 {
+      margin: 0;
+
+      font-size: 50px;
+    }
+
+    .hero h2 span {
+      color: rgb(128, 62, 44);
+    }
+
+    .hero p {
+      padding: 0;
+      margin: 0;
+      color: rgb(16, 16, 16);
+      font-size: 18px;
+    }
+
+    /* 4. Featured Categories Section */
+    .cat {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+
+      background: linear-gradient(to bottom, rgb(243, 248, 251), rgb(181, 221, 240));
+      padding: 30px 20px;
+      margin-bottom: 40px;
+    }
+
+    .cat h2 {
+      text-align: center;
+      font-size: 26px;
+    }
+
+    .cat-cards {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 25px;
+    }
+
+    .cat-card {
+      width: 170px;
+      height: 180px;
+      background-color: #ffffff;
+      border-radius: 20px;
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+      padding: 10px;
+      text-decoration: none;
+      color: #222;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+      transition: transform 0.3s ease;
+    }
+
+    .cat-card:hover {
+      transform: scale(1.08);
+    }
+
+    .cat-card img {
+      width: 90px;
+      height: 90px;
+      object-fit: contain;
+      border-radius: 12px;
+    }
+
+    .cat-card h4 {
+      margin: 0;
+      font-size: 15px;
+    }
+
+    /* 5. Featured Products Section */
+    .deals {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      background: linear-gradient(to right, rgb(236, 233, 236), rgb(213, 198, 209));
+      padding: 30px 20px;
+      margin-bottom: 40px;
+    }
+
+    .deals h2 {
+      text-align: center;
+      font-size: 26px;
+    }
+
+    .deals-cards {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 25px;
+    }
+
+    .deals-card {
+      width: 200px;
+      background-color: #ffffff;
+      border-radius: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px;
+      text-align: center;
+      gap: 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+      transition: transform 0.3s ease;
+    }
+
+    .deals-card:hover {
+      transform: scale(1.08);
+    }
+
+    .deals-card img {
+      width: 140px;
+      height: 140px;
+      object-fit: contain;
+      border-radius: 20px;
+    }
+
+    .deals-card h4 {
+      margin: 0;
+      font-size: 16px;
+    }
+
+    .deals-card p {
+      margin: 5px 0 0 0;
+      font-weight: bold;
+      color: #f47b20;
+    }
+
+    /* 6. Simple Footer */
+    footer {
+      background-color: #211b4a;
+      color: white;
+      display: flex;
+      justify-content: space-around;
+      padding: 25px 7%;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .feature {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .feature-icon {
+      font-size: 25px;
+    }
+
+    .feature h3 {
+      font-size: 13px;
+      margin-bottom: 5px;
+    }
+
+    .feature p {
+      font-size: 11px;
+      color: #ccc;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Simple Navigation Bar Linking to Related Pages -->
+  <header class="navbar">
+    <a href="index.html" class="logo">🛒 Web<span>Kart</span></a>
+      <nav>
+            <a href="home.html" class="active">Home</a>
+            <a href="products.html">Products</a>
+            <a href="review.html">Reviews</a>
+            <a href="contact.html" >Contact</a>
+        </nav>
+  </header>
+
+  <!-- Main Container -->
+  <div class="Home">
+    <!-- Hero Section -->
+    <div class="hero">
+      <h1>Welcome to WebKart</h1>
+      <h2>
+        Shop Smart,<br /><span style="padding-left: 10px">Live Better</span>
+      </h2>
+      <p>Discover products you love, at prices you'll love even more.</p>
+      <div class="button"><a href="products.html"> Shop Now</a></div>
+    </div>
+
+<!-- Featured Categories -->
+    <div class="cat">
+      <h2>Featured Categories</h2>
+      <div class="cat-cards">
+        <div class="cat-card">
+          <img src="./electronics.png" alt="Electronics" />
+          <h4>Electronics</h4>
+        </div>
+        <div class="cat-card">
+          <img src="./Fashion.jpeg" alt="Fashion" />
+          <h4>Fashion</h4>
+        </div>
+        <div class="cat-card">
+          <img src="./Beauty.jpeg" alt="Beauty" />
+          <h4>Beauty</h4>
+        </div>
+        <div class="cat-card">
+          <img src="./Furniture.jpeg" alt="Home & Living" />
+          <h4>Home & Living</h4>
+        </div>
+        <div class="cat-card">
+          <img src="./Sports.jpeg" alt="Sports" />
+          <h4>Sports</h4>
+        </div>
+        <div class="cat-card">
+          <img src="./Toys.jpeg" alt="Toys & Kids" />
+          <h4>Toys & Kids</h4>
+        </div>
+      </div>
+    </div>
+
+    <!-- Featured Products -->
+    <div class="deals">
+      <h2>Featured Products</h2>
+      <div class="deals-cards">
+        <div class="deals-card">
+          <img src="./ps5.png" alt="PS5" />
+          <div>
+            <h4>PS5 Console</h4>
+            <p>price: 50,000/-</p>
+          </div>
+        </div>
+        <div class="deals-card">
+          <img src="./bag.png" alt="Travel Backpack" />
+          <div>
+            <h4>Travel Backpack</h4>
+            <p>price: 5,000/-</p>
+          </div>
+        </div>
+        <div class="deals-card">
+          <img src="./shoes.jpg" alt="White Sneakers" />
+          <div>
+            <h4>White Sneakers</h4>
+            <p>price: 3,000/-</p>
+          </div>
+        </div>
+        <div class="deals-card">
+          <img src="./headphones.png" alt="Headphones" />
+          <div>
+            <h4>Headphones</h4>
+            <p>price: 3,200/-</p>
+          </div>
+        </div>
+        <div class="deals-card">
+          <img src="./sunglasses.jpeg" alt="Sun Glasses" />
+          <div>
+            <h4>Sun Glasses</h4>
+            <p>price: 1,200/-</p>
+          </div>
+        </div>
+        <div class="deals-card">
+          <img src="./watch.jpg" alt="Watch" />
+          <div>
+            <h4>Smart Watch</h4>
+            <p>price: 2,100/-</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</body>
+
+</html>
